@@ -1,8 +1,10 @@
 import { Image } from 'expo-image';
+import { useRouter } from 'expo-router';
 import React from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-export default function WelcomeScreen({ onStart }: { onStart: () => void }) {
+export default function Index({ onStart }: { onStart: () => void }) {
+   const router = useRouter();
   return (
     <View style={styles.container}>
       <Image
@@ -13,9 +15,9 @@ export default function WelcomeScreen({ onStart }: { onStart: () => void }) {
       <Text style={styles.title}>Bienvenue sur Ktane</Text>
       <Text style={styles.subtitle}>Tu es prêt(e) à désamorcer les consignes? </Text>
 
-      <Pressable style={styles.startButton} onPress={onStart}>
+      <TouchableOpacity style={styles.startButton} onPress={() => router.push('/color')}>
         <Text style={styles.startText}>Commencer</Text>
-      </Pressable>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -26,7 +28,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#111',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 20,
+    padding: 50,
   },
   logo: {
     width: 200,
